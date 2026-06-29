@@ -41,6 +41,7 @@ const PAGE_SOCIAL_IMAGES: Record<string, SocialImage> = {
   '/cheats/': shot(1, 'ARC Raiders cheat tiers — ESP and combat tools'),
   '/cheats/xray/': shot(0, 'ARC Raiders Xray cheat — ESP overlay preview'),
   '/cheats/pro/': shot(2, 'ARC Raiders Pro cheat — combat and aim tools'),
+  '/cheats/viper/': shot(1, 'ARC Raiders Viper cheat — aimbot, ESP, and radar hack'),
   '/cheats/private/': shot(3, 'ARC Raiders Private cheat — full extraction suite'),
   '/products/': shot(4, 'ARC Raiders products — Cloud DMA, UGC, and HWID Spoofer'),
   '/products/ugc/': shot(4, 'ARC Raiders UGC account recovery tools'),

@@ -21,24 +21,27 @@ function parseYamlValue(block, key) {
   return match?.[1]?.trim() ?? null;
 }
 
+function normalizePath(pathname) {
+  if (pathname === '/') return '/';
+  return pathname.endsWith('/') ? pathname : `${pathname}/`;
+}
+
 const IGDB = 'https://images.igdb.com/igdb/image/upload/t_screenshot_huge';
 const IGDB_COVER = 'https://images.igdb.com/igdb/image/upload/t_1080p/co9rk1.jpg';
 
 /** @type {Record<string, { url: string, title: string }>} */
-export const PAGE_SITEMAP_IMAGES = {
+const STATIC_PAGE_SITEMAP_IMAGES = {
   '/': { url: `${IGDB}/scii62.jpg`, title: 'ARC Raiders extraction gameplay' },
   '/cheats/': { url: `${IGDB}/sc11kk7.jpg`, title: 'ARC Raiders cheat tiers' },
   '/cheats/xray/': { url: `${IGDB}/scii62.jpg`, title: 'ARC Raiders Xray cheat' },
   '/cheats/pro/': { url: `${IGDB}/sc11kk8.jpg`, title: 'ARC Raiders Pro cheat' },
+  '/cheats/viper/': { url: `${IGDB}/sc11kk7.jpg`, title: 'ARC Raiders Viper cheat — aimbot, ESP, and radar' },
   '/cheats/private/': { url: `${IGDB}/sc11kk9.jpg`, title: 'ARC Raiders Private cheat' },
   '/products/': { url: `${IGDB}/sc11kka.jpg`, title: 'ARC Raiders products' },
   '/products/ugc/': { url: `${IGDB}/sc11kka.jpg`, title: 'ARC Raiders UGC tools' },
   '/products/cloud-dma/': { url: `${IGDB}/sc11kk9.jpg`, title: 'ARC Raiders Cloud DMA' },
   '/products/hwid-spoofer/': { url: `${IGDB}/sc11kkc.jpg`, title: 'ARC Raiders HWID Spoofer' },
   '/blog/': { url: `${IGDB}/sc11kk7.jpg`, title: 'ARC Raiders blog' },
-  '/blog/arc-raiders-cheats-guide/': { url: `${IGDB}/scii62.jpg`, title: 'ARC Raiders cheats guide' },
-  '/blog/arc-raiders-spoofer-guide/': { url: `${IGDB}/sc11kk9.jpg`, title: 'ARC Raiders spoofer guide' },
-  '/blog/season-1-meta-analysis/': { url: `${IGDB}/sc11kk8.jpg`, title: 'ARC Raiders Season 1 meta' },
   '/about/': { url: `${IGDB}/sc11kk8.jpg`, title: 'About Arc Raiders Cheats' },
   '/faq/': { url: `${IGDB}/sc11kka.jpg`, title: 'Arc Raiders Cheats FAQ' },
   '/contact/': { url: `${IGDB}/sc11kk9.jpg`, title: 'Contact Arc Raiders Cheats' },
@@ -46,15 +49,9 @@ export const PAGE_SITEMAP_IMAGES = {
   '/terms/': { url: IGDB_COVER, title: 'ARC Raiders official cover art' },
 };
 
-/** @param {string} pathname */
-export function getPageSitemapImage(pathname) {
-  const path = pathname.endsWith('/') || pathname === '/' ? pathname : `${pathname}/`;
-  return PAGE_SITEMAP_IMAGES[path] ?? PAGE_SITEMAP_IMAGES['/'];
-}
-
-/** @returns {Map<string, { lastmod: string, coverImage?: string, coverImageAlt?: string }>} */
+/** @returns {Map<string, { lastmod: string, coverImage?: string, coverImageAlt?: string, title?: string }>} */
 export function getBlogSitemapMeta() {
-  /** @type {Map<string, { lastmod: string, coverImage?: string, coverImageAlt?: string }>} */
+  /** @type {Map<string, { lastmod: string, coverImage?: string, coverImageAlt?: string, title?: string }>} */
   const map = new Map();
   const dir = join(__dirname, '../content/blog');
 
@@ -72,9 +69,11 @@ export function getBlogSitemapMeta() {
     const lastmod = new Date(rawDate).toISOString();
     const coverImage = parseYamlValue(block, 'coverImage');
     const coverImageAlt = parseYamlValue(block, 'coverImageAlt');
+    const title = parseYamlValue(block, 'title');
 
     map.set(`${SITE_URL}/blog/${slug}/`, {
       lastmod,
+      title: title ?? undefined,
       ...(coverImage ? { coverImage, coverImageAlt: coverImageAlt ?? undefined } : {}),
     });
   }
@@ -82,9 +81,45 @@ export function getBlogSitemapMeta() {
   return map;
 }
 
+const blogMeta = getBlogSitemapMeta();
+
+/** Blog post images auto-built from frontmatter — new posts need no manual sitemap entry. */
+/** @type {Record<string, { url: string, title: string }>} */
+const BLOG_SITEMAP_IMAGES = Object.fromEntries(
+  [...blogMeta.entries()].map(([url, entry]) => {
+    const path = normalizePath(new URL(url).pathname);
+    const imageUrl = entry.coverImage ?? STATIC_PAGE_SITEMAP_IMAGES['/blog/'].url;
+    const imageTitle = entry.coverImageAlt ?? entry.title ?? 'ARC Raiders blog article';
+    return [path, { url: imageUrl, title: imageTitle }];
+  }),
+);
+
+export const PAGE_SITEMAP_IMAGES = {
+  ...STATIC_PAGE_SITEMAP_IMAGES,
+  ...BLOG_SITEMAP_IMAGES,
+};
+
+/** All blog URLs for sitemap (index + every published post). */
+export const BLOG_SITEMAP_URLS = [
+  `${SITE_URL}/blog/`,
+  ...[...blogMeta.keys()],
+];
+
+/** Latest blog post date — used as lastmod for /blog/ index. */
+export const BLOG_INDEX_LASTMOD = [...blogMeta.values()]
+  .map((entry) => entry.lastmod)
+  .sort()
+  .at(-1);
+
+/** @param {string} pathname */
+export function getPageSitemapImage(pathname) {
+  const path = normalizePath(pathname);
+  return PAGE_SITEMAP_IMAGES[path] ?? PAGE_SITEMAP_IMAGES['/'];
+}
+
 /** @param {string} pathname */
 export function getPagePriority(pathname) {
-  const path = pathname.endsWith('/') || pathname === '/' ? pathname : `${pathname}/`;
+  const path = normalizePath(pathname);
 
   if (path === '/') return 1;
   if (path === '/cheats/' || path === '/products/') return 0.9;
