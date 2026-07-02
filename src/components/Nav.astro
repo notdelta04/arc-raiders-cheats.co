@@ -22,7 +22,7 @@ const currentPath = Astro.url.pathname;
     </ul>
     <div class="nav-actions">
       <ThemeToggle />
-      <a href={ZADEYO_CHEATS_URL} class="nav-cta">Get Access</a>
+      <button type="button" class="nav-cta" data-go-url={ZADEYO_CHEATS_URL}>Get Access</button>
       <label for="nav-open" class="nav-toggle" aria-label="Toggle menu">
         <Icon name="menu" size={20} />
       </label>

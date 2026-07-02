@@ -74,8 +74,8 @@ const schema = [
 ---
 
 <BaseLayout
-  title="About Arc Raider Cheats — Who We Are"
-  description="Arc Raider cheats, ESP and aimbot tiers, and premium tools — built and maintained by players who actually raid in Season 1."
+  title="About Arc Raiders Cheats — Who We Are"
+  description="Arc Raiders cheats, ESP and aimbot tiers, and premium tools — built and maintained by players who actually raid in Season 1."
   schema={schema}
 >
   <section class="section listing-section listing-section--center about-page">
@@ -176,7 +176,12 @@ const schema = [
             then use Get Access for instant checkout when you are ready.
           </p>
           <div class="about-contact-actions">
-            <MotionButton client:visible href={ZADEYO_CHEATS_URL} className="btn-primary">
+            <MotionButton
+              client:visible
+              href={ZADEYO_CHEATS_URL}
+              className="btn-primary"
+              hideUrlOnHover={true}
+            >
               Get Access
             </MotionButton>
             <MotionButton client:visible href="/cheats/" className="btn-ghost">

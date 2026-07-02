@@ -26,7 +26,7 @@ const socialImage = resolveSocialImage(`/products/${product.id}/`);
 
 const schema = [
   productSchema({
-    name: `${product.name} — Arc Raider Cheats`,
+    name: `${product.name} — Arc Raiders Cheats`,
     description: product.description,
     url,
     image: socialImage.src,
@@ -41,8 +41,8 @@ const schema = [
 ---
 
 <BaseLayout
-  title={`${product.name} for Arc Raider Cheats — ${product.tier}`}
-  description={`${product.name} for Arc Raider cheats — ${product.description}`}
+  title={`${product.name} for Arc Raiders Cheats — ${product.tier}`}
+  description={`${product.name} for Arc Raiders cheats — ${product.description}`}
   canonical={url}
   schema={schema}
 >
@@ -91,6 +91,7 @@ const schema = [
                 client:visible
                 href={ZADEYO_CHEATS_URL}
                 className="btn-primary cheat-detail-btn"
+                hideUrlOnHover={true}
               >
                 Get {product.name} Access
               </MotionButton>

@@ -74,7 +74,7 @@ const schema = [
         <h1>{homepageHero.title}</h1>
         <p class="hero-desc">{homepageHero.description}</p>
         <div class="hero-btns">
-          <a href={ZADEYO_CHEATS_URL} class="btn-primary">Browse Cheats</a>
+          <button type="button" class="btn-primary" data-go-url={ZADEYO_CHEATS_URL}>Browse Cheats</button>
           <a href="/products/" class="btn-ghost">View Products</a>
         </div>
       </div>
@@ -108,9 +108,9 @@ const schema = [
     <div class="section-inner">
       <div class="listing-intro homepage-guide-intro">
         <div class="s-tag">// Guide</div>
-        <h2 class="listing-subtitle">Arc Raider Cheats Guide</h2>
+        <h2 class="listing-subtitle">Arc Raiders Cheats Guide</h2>
         <p class="listing-intro-desc">
-          What to look for when buying Arc Raider cheats — features, safety, and support without
+          What to look for when buying Arc Raiders cheats — features, safety, and support without
           the sales pitch.
         </p>
       </div>
@@ -136,7 +136,9 @@ const schema = [
                 {paragraph.includes('Zadeyo') ? (
                   <>
                     {paragraph.split('Zadeyo')[0]}
-                    <a href={ZADEYO_CHEATS_URL}>Zadeyo</a>
+                    <button type="button" class="inline-link-button" data-go-url={ZADEYO_CHEATS_URL}>
+                      Zadeyo
+                    </button>
                     {paragraph.split('Zadeyo')[1]}
                   </>
                 ) : (
@@ -161,7 +163,7 @@ const schema = [
     <div class="section-inner">
       <div class="s-head">
         <div class="s-tag">// Cheats</div>
-        <h2 class="s-title">Arc Raider Cheats</h2>
+        <h2 class="s-title">Arc Raiders Cheats</h2>
         <p class="s-sub">Buy Xray, Pro, or Private — ESP, aimbot, and extraction tools for every raid.</p>
       </div>
       <div class="aff-grid aff-grid-three cheat-grid animate-grid">
@@ -184,8 +186,8 @@ const schema = [
     <div class="section-inner">
       <div class="s-head">
         <div class="s-tag">// Products</div>
-        <h2 class="s-title">Arc Raider Cheats Products</h2>
-        <p class="s-sub">Cloud DMA, UGC account tools, and HWID Spoofer for a full Arc Raider cheats stack.</p>
+        <h2 class="s-title">Arc Raiders Cheats Products</h2>
+        <p class="s-sub">Cloud DMA, UGC account tools, and HWID Spoofer for a full Arc Raiders cheats stack.</p>
       </div>
       <div class="aff-grid aff-grid-three animate-grid">
         {products.map((product) => (
@@ -214,7 +216,7 @@ const schema = [
       <div class="s-head">
         <div class="s-tag">// Blog</div>
         <h2 class="s-title">Latest Updates</h2>
-        <p class="s-sub">Patch breakdowns, meta analysis, and Arc Raider cheats guides from our team.</p>
+        <p class="s-sub">Patch breakdowns, meta analysis, and Arc Raiders cheats guides from our team.</p>
       </div>
       <div class="blog-grid animate-grid">
         {blogPosts.map((post) => (
@@ -234,9 +236,9 @@ const schema = [
   <section class="section">
     <div class="section-inner">
       <div class="cta-banner">
-        <h2>Ready to Run Arc Raider Cheats?</h2>
+        <h2>Ready to Run Arc Raiders Cheats?</h2>
         <p>Get Xray, Pro, or Private access — or add Cloud DMA, UGC, and HWID Spoofer to your setup.</p>
-        <a href={ZADEYO_CHEATS_URL} class="btn-primary">Get Access Now</a>
+        <button type="button" class="btn-primary" data-go-url={ZADEYO_CHEATS_URL}>Get Access Now</button>
       </div>
     </div>
   </section>

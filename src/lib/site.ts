@@ -16,7 +16,6 @@ export const SITE = {
 
 export const SITE_KEYWORDS = [
   'arc raiders cheats',
-  'arc raider cheats',
   'arc raiders cheat',
   'arc raiders hack',
   'arc raiders hacks',
@@ -64,7 +63,7 @@ export const SITE_FONT = {
 
 export const SITE_LOGO_URL = `${SITE.url}${SITE.logo}`;
 
-export const ZADEYO_CHEATS_URL = '/buy/';
+export const ZADEYO_CHEATS_URL = 'https://zadeyo.com/go/PRO?to=/products/arc-raiders-cheats';
 
 export const NAV_LINKS = [
   { href: '/cheats/', label: 'Cheats' },

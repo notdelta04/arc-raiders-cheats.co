@@ -99,7 +99,12 @@ const schema = [
             </div>
           )}
           <div class="cheat-detail-actions">
-            <MotionButton client:visible href={ZADEYO_CHEATS_URL} className="btn-primary cheat-detail-btn">
+            <MotionButton
+              client:visible
+              href={ZADEYO_CHEATS_URL}
+              className="btn-primary cheat-detail-btn"
+              hideUrlOnHover={true}
+            >
               Get {cheat.name} Access
             </MotionButton>
             <MotionButton client:visible href="/cheats/" className="btn-ghost cheat-detail-btn">
@@ -115,7 +120,7 @@ const schema = [
     <div class="section-inner">
       <div class="cheat-compare-head">
         <div class="s-tag">// Tiers</div>
-        <h2 class="cheat-detail-section-title">All Arc Raider Cheat Tiers</h2>
+        <h2 class="cheat-detail-section-title">All Arc Raiders Cheat Tiers</h2>
         <p class="cheat-compare-sub">Xray, Pro, and Private — full feature breakdown.</p>
       </div>
       <CheatCompareTable activeId={cheat.id} />

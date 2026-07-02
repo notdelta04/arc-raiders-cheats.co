@@ -238,6 +238,18 @@ nav {
   border: 0;
 }
 
+.inline-link-button {
+  background: none;
+  border: 0;
+  margin: 0;
+  padding: 0;
+  color: var(--accent2);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  cursor: pointer;
+  font: inherit;
+}
+
 .icon,
 .lucide-icon {
   display: block;
