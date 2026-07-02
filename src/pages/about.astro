@@ -6,7 +6,7 @@ import MotionReveal from '../components/react/MotionReveal';
 import { cheats } from '../data/cheats';
 import { products } from '../data/products';
 import { breadcrumbSchema } from '../lib/schema';
-import { SITE } from '../lib/site';
+import { SITE, ZADEYO_CHEATS_URL } from '../lib/site';
 
 const aboutSections = [
   {
@@ -60,7 +60,7 @@ const aboutSections = [
     title: 'Getting Started',
     paragraphs: [
       'Browse our cheat tiers to find the feature set that matches your playstyle — minimal overlay, mid-tier combat suite, or the complete Private package with extraction intel.',
-      'Review products if you need infrastructure or account recovery tools alongside cheats. When you are ready, use the contact page with your chosen tier or product and we send setup steps and activation details.',
+      'Review products if you need infrastructure or account recovery tools alongside cheats. When you are ready, click Get Access on any cheat or product page for instant checkout and setup details.',
     ],
   },
 ];
@@ -173,10 +173,13 @@ const schema = [
           <p class="about-contact-desc">
             Compare cheat tiers for ESP, aim tools, and extraction intel — or browse products for
             Cloud DMA infrastructure, UGC account tools, and HWID Spoofer. Pick what fits your run,
-            then reach out through the contact page when you are ready for access.
+            then use Get Access for instant checkout when you are ready.
           </p>
           <div class="about-contact-actions">
-            <MotionButton client:visible href="/cheats/" className="btn-primary">
+            <MotionButton client:visible href={ZADEYO_CHEATS_URL} className="btn-primary">
+              Get Access
+            </MotionButton>
+            <MotionButton client:visible href="/cheats/" className="btn-ghost">
               Browse Cheats
             </MotionButton>
             <MotionButton client:visible href="/products/" className="btn-ghost">

@@ -13,7 +13,13 @@ import { homepageGuideIntro, homepageGuideSections, homepageGuideTakeaways } fro
 import { homepageFaqs, products } from '../data/products';
 import { ZADEYO_CHEATS_URL, SITE_KEYWORDS } from '../lib/site';
 import { resolveSocialImage } from '../lib/social-images';
-import { websiteSchema, faqSchema } from '../lib/schema';
+import {
+  websiteSchema,
+  faqSchema,
+  organizationSchema,
+  homepageSoftwareApplicationSchema,
+  breadcrumbSchema,
+} from '../lib/schema';
 
 const homeSocial = resolveSocialImage('/');
 
@@ -21,12 +27,23 @@ const blogPosts = (await getCollection('blog'))
   .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
   .slice(0, 3);
 
-const schema = [websiteSchema(), faqSchema([...homepageFaqs], homeSocial.src)];
+const schema = [
+  homepageSoftwareApplicationSchema(homeSocial.src),
+  websiteSchema(),
+  organizationSchema(),
+  faqSchema([...homepageFaqs], homeSocial.src),
+  breadcrumbSchema([
+    { name: 'Home', url: 'https://arcraiderscheats.co/' },
+    { name: 'Cheats', url: 'https://arcraiderscheats.co/cheats/' },
+    { name: 'Products', url: 'https://arcraiderscheats.co/products/' },
+    { name: 'Blog', url: 'https://arcraiderscheats.co/blog/' },
+  ]),
+];
 ---
 
 <BaseLayout
-  title="Arc Raiders Cheats — ESP, Aimbot & More 2026"
-  description="Arc Raiders cheats with ESP, aimbot, and wallhack tools. Buy Xray, Pro, or Private — undetected Arc Raiders cheats with instant access. Cloud DMA & HWID spoofer available."
+  title="Arc Raiders Cheats – Undetected ESP, Aimbot & Radar 2026"
+  description="Arc Raiders Cheats – Dominate every raid with player ESP, loot ESP, bone-targeted aimbot, 2D radar hack, and extraction intel. Fully external, safe against EAC. Updated every patch."
   schema={schema}
   keywords={[...SITE_KEYWORDS]}
   lcpImage={homepageHeroImage.src}
@@ -57,7 +74,7 @@ const schema = [websiteSchema(), faqSchema([...homepageFaqs], homeSocial.src)];
         <h1>{homepageHero.title}</h1>
         <p class="hero-desc">{homepageHero.description}</p>
         <div class="hero-btns">
-          <a href={ZADEYO_CHEATS_URL} class="btn-primary" rel="noopener noreferrer" target="_blank">Browse Cheats</a>
+          <a href={ZADEYO_CHEATS_URL} class="btn-primary">Browse Cheats</a>
           <a href="/products/" class="btn-ghost">View Products</a>
         </div>
       </div>
@@ -119,7 +136,7 @@ const schema = [websiteSchema(), faqSchema([...homepageFaqs], homeSocial.src)];
                 {paragraph.includes('Zadeyo') ? (
                   <>
                     {paragraph.split('Zadeyo')[0]}
-                    <a href={ZADEYO_CHEATS_URL} rel="noopener noreferrer">Zadeyo</a>
+                    <a href={ZADEYO_CHEATS_URL}>Zadeyo</a>
                     {paragraph.split('Zadeyo')[1]}
                   </>
                 ) : (
@@ -219,7 +236,7 @@ const schema = [websiteSchema(), faqSchema([...homepageFaqs], homeSocial.src)];
       <div class="cta-banner">
         <h2>Ready to Run Arc Raider Cheats?</h2>
         <p>Get Xray, Pro, or Private access — or add Cloud DMA, UGC, and HWID Spoofer to your setup.</p>
-        <a href={ZADEYO_CHEATS_URL} class="btn-primary" rel="noopener noreferrer" target="_blank">Get Access Now</a>
+        <a href={ZADEYO_CHEATS_URL} class="btn-primary">Get Access Now</a>
       </div>
     </div>
   </section>

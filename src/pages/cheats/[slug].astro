@@ -6,7 +6,7 @@ import MediaSwiper from '../../components/react/MediaSwiper';
 import MotionButton from '../../components/react/MotionButton';
 import { cheats, getCheatById, getCheatFeatures } from '../../data/cheats';
 import { articleSchema, breadcrumbSchema, softwareApplicationSchema } from '../../lib/schema';
-import { SITE } from '../../lib/site';
+import { SITE, ZADEYO_CHEATS_URL } from '../../lib/site';
 import { resolveSocialImage } from '../../lib/social-images';
 
 export function getStaticPaths() {
@@ -30,12 +30,13 @@ const socialImage = resolveSocialImage(`/cheats/${cheat.id}/`);
 
 const schema = [
   softwareApplicationSchema({
-    name: `${cheat.name} Arc Raider Cheats`,
+    name: `${cheat.name} — Arc Raiders Cheats`,
     description: cheat.description,
     url,
     image: socialImage.src,
     imageAlt: socialImage.alt,
     category: 'GameApplication',
+    featureList: cheatFeatures,
   }),
   breadcrumbSchema([
     { name: 'Home', url: SITE.url },
@@ -46,8 +47,8 @@ const schema = [
 ---
 
 <BaseLayout
-  title={`${cheat.name} Arc Raider Cheats — ${cheat.tier} Tier`}
-  description={`Buy ${cheat.name} Arc Raider cheats — ${cheat.description}`}
+  title={`${cheat.name} Arc Raiders Cheats — ${cheat.tier} Tier 2026`}
+  description={`Arc Raiders Cheats – ${cheat.name} ${cheat.tier} tier: ${cheat.description}`}
   canonical={url}
   schema={schema}
 >
@@ -69,37 +70,6 @@ const schema = [
         </div>
 
         <div class="cheat-detail-features">
-          {cheat.pricing && (
-            <div class="cheat-pricing">
-              <h2 class="cheat-detail-section-title">
-                <span class="s-tag">// Pricing</span>
-                Purchase {cheat.name}
-              </h2>
-              <div class="cheat-pricing-grid">
-                {cheat.pricing.day && (
-                  <div class="cheat-pricing-card">
-                    <span class="cheat-pricing-label">1 Day</span>
-                    <span class="cheat-pricing-price">{cheat.pricing.day}</span>
-                    <span class="cheat-pricing-note">One time purchase</span>
-                  </div>
-                )}
-                {cheat.pricing.week && (
-                  <div class="cheat-pricing-card cheat-pricing-card-featured">
-                    <span class="cheat-pricing-label">1 Week</span>
-                    <span class="cheat-pricing-price">{cheat.pricing.week}</span>
-                    <span class="cheat-pricing-note">One time purchase</span>
-                  </div>
-                )}
-                {cheat.pricing.month && (
-                  <div class="cheat-pricing-card">
-                    <span class="cheat-pricing-label">1 Month</span>
-                    <span class="cheat-pricing-price">{cheat.pricing.month}</span>
-                    <span class="cheat-pricing-note">One time purchase</span>
-                  </div>
-                )}
-              </div>
-            </div>
-          )}
           <h2 class="cheat-detail-section-title">
             <span class="s-tag">// Features</span>
             What&apos;s Included
@@ -129,7 +99,7 @@ const schema = [
             </div>
           )}
           <div class="cheat-detail-actions">
-            <MotionButton client:visible href={`/contact/?cheat=${cheat.id}`} className="btn-primary cheat-detail-btn">
+            <MotionButton client:visible href={ZADEYO_CHEATS_URL} className="btn-primary cheat-detail-btn">
               Get {cheat.name} Access
             </MotionButton>
             <MotionButton client:visible href="/cheats/" className="btn-ghost cheat-detail-btn">

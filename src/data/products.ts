@@ -128,7 +128,7 @@ export const homepageFaqs = [
   {
     question: 'How do I get access after purchase?',
     answer:
-      'Use the contact page with your chosen tier or product. We send setup steps and activation details within 24 hours on weekdays.',
+      'Click Get Access on any cheat or product page — you are taken straight to checkout for instant delivery. Setup steps and activation details follow immediately after purchase.',
   },
   {
     question: 'Which OS does the Private cheat support?',

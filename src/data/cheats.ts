@@ -2,12 +2,6 @@ import type { IconName } from '../lib/icons';
 import type { MediaItem } from '../lib/media';
 import { getCheatTierMedia } from '../lib/cheat-media';
 
-export type CheatPricing = {
-  day?: string;
-  week?: string;
-  month?: string;
-};
-
 export type CheatTier = {
   id: string;
   icon: IconName;
@@ -16,7 +10,6 @@ export type CheatTier = {
   description: string;
   features: string[];
   media: MediaItem[];
-  pricing?: CheatPricing;
   systemRequirements?: string[];
   featured?: boolean;
 };
@@ -95,11 +88,6 @@ export const cheats: CheatTier[] = [
     name: 'Private',
     description:
       'Our in-house Viper private build — full aimbot, ESP, 2D radar, and extraction intel. Not resold, only available directly from us with long-term safety in mind.',
-    pricing: {
-      day: '$5.99',
-      week: '$14.99',
-      month: '$29.99',
-    },
     systemRequirements: [
       'Steam version only (not Epic Games)',
       'Windows 10: 22H2, 21H2, 21H1, 20H2, 2004, 1909',

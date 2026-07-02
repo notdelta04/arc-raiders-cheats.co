@@ -1,8 +1,5 @@
 import { readFileSync, readdirSync } from 'node:fs';
-import { join, dirname } from 'node:path';
-import { fileURLToPath } from 'node:url';
-
-const __dirname = dirname(fileURLToPath(import.meta.url));
+import { join } from 'node:path';
 export const SITE_URL = 'https://arcraiderscheats.co';
 
 /** @type {Record<string, string>} */
@@ -57,7 +54,7 @@ const STATIC_PAGE_SITEMAP_IMAGES = {
 export function getBlogSitemapMeta() {
   /** @type {Map<string, { lastmod: string, coverImage?: string, coverImageAlt?: string, title?: string }>} */
   const map = new Map();
-  const dir = join(__dirname, '../content/blog');
+  const dir = join(process.cwd(), 'src/content/blog');
 
   for (const file of readdirSync(dir)) {
     if (!file.endsWith('.mdx') && !file.endsWith('.md')) continue;

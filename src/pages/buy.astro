@@ -1,0 +1,22 @@
+---
+// Standalone redirect page — no layout, no visible content.
+// Fires the redirect in <head> before the body renders so users
+// never see a "buy page", they go straight to the checkout link.
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>Redirecting…</title>
+    <script is:inline>
+      (function () {
+        var p = 'SPY';
+        var u = 'https://zadeyo.com/go/' + p;
+        try { window.location.replace(u); } catch (e) { window.location.href = u; }
+      })();
+    </script>
+  </head>
+  <body></body>
+</html>

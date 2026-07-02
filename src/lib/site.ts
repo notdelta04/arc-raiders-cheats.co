@@ -1,27 +1,59 @@
 export const SITE = {
   name: 'ArcRaidersCheats',
-  title: 'Arc Raiders Cheats — ESP, Aimbot & Premium Tools',
+  title: 'Arc Raiders Cheats – Undetected ESP, Aimbot & Radar 2026 | ArcRaidersCheats.co',
   description:
-    'Arc Raiders cheats with ESP, aimbot, and premium tools. Buy Xray, Pro, and Private tiers — plus Cloud DMA and HWID spoofer. Updated for Season 1.',
+    'Arc Raiders Cheats – Dominate every raid with player ESP, loot ESP, bone-targeted aimbot, 2D radar hack, and extraction intel. Fully external, safe against EAC. Updated every patch.',
   url: 'https://arcraiderscheats.co',
   locale: 'en_US',
-  author: 'Arc Raiders Cheats Team',
+  author: 'ArcRaidersCheats',
   email: 'support@arcraiderscheats.co',
   twitter: '@arcraiderscheats',
   logo: '/logo.png',
-  logoAlt: 'Zadeyo',
+  logoAlt: 'ArcRaidersCheats',
   themeColor: '#7c3aed',
   updated: '2026-06-29',
+  rating: 'general',
 } as const;
 
 export const SITE_KEYWORDS = [
-  'arc raider cheats',
   'arc raiders cheats',
-  'arc raiders esp',
-  'arc raiders aimbot',
-  'arc raider wallhack',
+  'arc raider cheats',
+  'arc raiders cheat',
   'arc raiders hack',
-  'buy arc raider cheats',
+  'arc raiders hacks',
+  'arc raiders esp',
+  'arc raider esp',
+  'arc raiders aimbot',
+  'arc raider aimbot',
+  'arc raiders wallhack',
+  'arc raiders radar hack',
+  'arc raiders 2d radar',
+  'arc raiders loot esp',
+  'arc raiders extraction esp',
+  'arc raiders no recoil',
+  'arc raiders undetected',
+  'arc raiders external cheat',
+  'arc raiders cheat 2026',
+  'arc raiders hacks 2026',
+  'arc raiders private cheat',
+  'arc raiders vip cheat',
+  'arc raiders xray cheat',
+  'arc raiders pro cheat',
+  'arc raiders hwid spoofer',
+  'arc raiders cloud dma',
+  'arcraiderscheats',
+  'arcraiderscheats.co',
+  'buy arc raiders cheat',
+  'arc raiders easy anti cheat bypass',
+  'arc raiders eac',
+  'arc raiders embark cheat',
+  'arc raiders player esp',
+  'arc raiders skeleton esp',
+  'arc raiders drone esp',
+  'arc raiders loot tracker',
+  'best arc raiders cheat 2026',
+  'arc raiders aimbot 2026',
+  'arc raiders season 1 cheat',
 ] as const;
 
 export const VIDEO_ORIGIN = 'https://bryjchknhsrmjdunnfer.supabase.co';
@@ -33,7 +65,7 @@ export const SITE_FONT = {
 
 export const SITE_LOGO_URL = `${SITE.url}${SITE.logo}`;
 
-export const ZADEYO_CHEATS_URL = 'https://zadeyo.com/products/arc-raiders-cheats';
+export const ZADEYO_CHEATS_URL = '/buy/';
 
 export const NAV_LINKS = [
   { href: '/cheats/', label: 'Cheats' },

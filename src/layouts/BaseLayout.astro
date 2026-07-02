@@ -103,8 +103,9 @@ const jsonLd = [
     <meta name="description" content={metaDescription} />
     <meta name="author" content={SITE.author} />
     {keywords.length > 0 && <meta name="keywords" content={keywords.join(', ')} />}
-    <meta name="robots" content={noindex ? 'noindex, nofollow' : 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1'} />
+    <meta name="robots" content={noindex ? 'noindex, nofollow' : 'index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1'} />
     <meta name="theme-color" content={SITE.themeColor} />
+    <meta name="rating" content={SITE.rating} />
     <link rel="canonical" href={canonicalUrl} />
     <link rel="sitemap" type="application/xml" href="/sitemap-index.xml" />
     <link rel="icon" type="image/png" href={SITE.logo} sizes="32x32" />
