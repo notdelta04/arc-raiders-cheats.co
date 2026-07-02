@@ -5,7 +5,7 @@ import MotionButton from '../../components/react/MotionButton';
 import MotionReveal from '../../components/react/MotionReveal';
 import { products, getProductById } from '../../data/products';
 import { breadcrumbSchema, productSchema } from '../../lib/schema';
-import { SITE } from '../../lib/site';
+import { SITE, ZADEYO_CHEATS_URL } from '../../lib/site';
 import { resolveSocialImage } from '../../lib/social-images';
 
 export function getStaticPaths() {
@@ -89,7 +89,7 @@ const schema = [
             <div class="product-detail-cta">
               <MotionButton
                 client:visible
-                href={`/contact/?product=${product.id}`}
+                href={ZADEYO_CHEATS_URL}
                 className="btn-primary cheat-detail-btn"
               >
                 Get {product.name} Access

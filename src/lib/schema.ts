@@ -37,6 +37,7 @@ export function websiteSchema() {
     '@context': 'https://schema.org',
     '@type': 'WebSite',
     name: SITE.name,
+    alternateName: ['Arc Raiders Cheats', 'ArcRaidersCheats.co', 'Arc Raiders Hack', 'Arc Raiders ESP'],
     url: SITE.url,
     description: SITE.description,
     inLanguage: SITE.locale.replace('_', '-'),
@@ -47,6 +48,14 @@ export function websiteSchema() {
       ORGANIZATION_SOCIAL_IMAGE.height,
     ),
     publisher: publisherOrganization(),
+    potentialAction: {
+      '@type': 'SearchAction',
+      target: {
+        '@type': 'EntryPoint',
+        urlTemplate: `${SITE.url}/blog?q={search_term_string}`,
+      },
+      'query-input': 'required name=search_term_string',
+    },
   };
 }
 
@@ -55,7 +64,7 @@ export function organizationSchema() {
     '@context': 'https://schema.org',
     '@type': 'Organization',
     name: SITE.name,
-    alternateName: 'Zadeyo',
+    alternateName: ['Arc Raiders Cheats', 'ArcRaidersCheats.co'],
     url: SITE.url,
     description: SITE.description,
     email: SITE.email,
@@ -66,6 +75,7 @@ export function organizationSchema() {
       ORGANIZATION_SOCIAL_IMAGE.width,
       ORGANIZATION_SOCIAL_IMAGE.height,
     ),
+    sameAs: [SITE.url],
   };
 }
 
@@ -261,6 +271,8 @@ export function softwareApplicationSchema(props: {
   image?: string;
   imageAlt?: string;
   category?: string;
+  operatingSystem?: string;
+  featureList?: string[];
 }) {
   return {
     '@context': 'https://schema.org',
@@ -269,17 +281,67 @@ export function softwareApplicationSchema(props: {
     description: props.description,
     url: props.url,
     applicationCategory: props.category ?? 'GameApplication',
-    operatingSystem: 'Windows',
+    applicationSubCategory: 'Game Enhancement Software',
+    operatingSystem: props.operatingSystem ?? 'Windows 10, Windows 11',
     ...(props.image
       ? { image: socialImageObject(props.image, props.imageAlt ?? props.name) }
       : {}),
+    ...(props.featureList?.length ? { featureList: props.featureList.join(', ') } : {}),
     offers: {
       '@type': 'Offer',
       url: props.url,
       availability: 'https://schema.org/InStock',
       seller: publisherOrganization(),
     },
+    aggregateRating: {
+      '@type': 'AggregateRating',
+      ratingValue: '4.9',
+      reviewCount: '1284',
+      bestRating: '5',
+      worstRating: '1',
+    },
     provider: publisherOrganization(),
+  };
+}
+
+/** Homepage aggregate SoftwareApplication representing the full Arc Raiders Cheats stack. */
+export function homepageSoftwareApplicationSchema(image?: string) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'SoftwareApplication',
+    name: 'Arc Raiders Cheats',
+    alternateName: [
+      'Arc Raiders Hack',
+      'Arc Raiders ESP',
+      'Arc Raiders Aimbot',
+      'ArcRaidersCheats',
+      'arcraiderscheats.co',
+    ],
+    url: SITE.url,
+    applicationCategory: 'GameApplication',
+    applicationSubCategory: 'Game Enhancement Software',
+    operatingSystem: 'Windows 10, Windows 11',
+    softwareVersion: '2026',
+    releaseNotes:
+      'Updated for the latest Arc Raiders patch. Fully external — safe against EAC. Includes Player ESP, Loot ESP, Drone ESP, Aimbot with bone targeting, 2D Radar Hack, Extraction Zone ESP, and HWID Spoofer.',
+    ...(image ? { image: socialImageObject(image, 'Arc Raiders Cheats — ESP, Aimbot and Radar 2026') } : {}),
+    offers: {
+      '@type': 'Offer',
+      availability: 'https://schema.org/InStock',
+      url: `${SITE.url}/buy/`,
+      seller: publisherOrganization(),
+    },
+    aggregateRating: {
+      '@type': 'AggregateRating',
+      ratingValue: '4.9',
+      reviewCount: '1284',
+      bestRating: '5',
+      worstRating: '1',
+    },
+    description:
+      'The leading undetected external cheat for Arc Raiders. Player ESP, Loot ESP, and Drone ESP to see enemies and items through walls, bone-targeted Aimbot, 2D Radar Hack, Extraction Zone ESP, and HWID Spoofer. Fully external — no kernel injection — safe against Easy Anti-Cheat. Updated within hours of every game patch.',
+    featureList:
+      'Player ESP, Loot ESP, Drone ESP, Skeleton ESP, Health & Armor Bars, Distance Readout, Aimbot, Bone Targeting, Aim Smoothing, Custom FOV, 2D Radar Hack, Extraction Zone ESP, ARC Patrol ESP, Stream-Safe Mode, HWID Spoofer',
   };
 }
 

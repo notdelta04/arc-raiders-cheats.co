@@ -1,7 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { contactPageSchema, breadcrumbSchema } from '../lib/schema';
-import { SITE } from '../lib/site';
+import { SITE, ZADEYO_CHEATS_URL } from '../lib/site';
 import { resolveSocialImage } from '../lib/social-images';
 
 const contactSocial = resolveSocialImage('/contact/');
@@ -16,45 +16,23 @@ const schema = [
 ---
 
 <BaseLayout
-  title="Contact Arc Raider Cheats — Get Access"
-  description="Contact us to buy Arc Raider cheats or Cloud DMA, UGC, and HWID Spoofer. Support replies within 24 hours on weekdays."
+  title="Contact Arc Raiders Cheats — Get Access"
+  description="Get instant access to Arc Raiders cheats, Cloud DMA, UGC, and HWID Spoofer. Xray, Pro, and Private tiers available."
   schema={schema}
 >
   <section class="section listing-section">
     <div class="section-inner">
       <div class="listing-intro">
         <div class="s-tag">// Contact</div>
-        <h1>Contact Us</h1>
+        <h1>Get Access</h1>
         <p class="listing-intro-desc">
-          Product questions, coaching bookings, or spotted an error in our guides? Get in touch.
+          Ready for Arc Raiders cheats or products? Click below for instant checkout — Xray, Pro,
+          Private, Cloud DMA, UGC, and HWID Spoofer.
         </p>
       </div>
 
       <div class="form-page form-page--inline">
-        <p>
-          Email us directly at <a href={`mailto:${SITE.email}`}>{SITE.email}</a> or use the form below.
-          We typically respond within 24 hours on weekdays.
-        </p>
-
-        <form class="contact-form" action={`mailto:${SITE.email}`} method="post" enctype="text/plain">
-          <div>
-            <label for="name">Name</label>
-            <input type="text" id="name" name="name" required placeholder="Your name" />
-          </div>
-          <div>
-            <label for="email">Email</label>
-            <input type="email" id="email" name="email" required placeholder="you@example.com" />
-          </div>
-          <div>
-            <label for="subject">Subject</label>
-            <input type="text" id="subject" name="subject" placeholder="Product inquiry, coaching, etc." />
-          </div>
-          <div>
-            <label for="message">Message</label>
-            <textarea id="message" name="message" required placeholder="How can we help?"></textarea>
-          </div>
-          <button type="submit" class="btn-primary">Send Message</button>
-        </form>
+        <a href={ZADEYO_CHEATS_URL} class="btn-primary">Get Access</a>
       </div>
     </div>
   </section>
